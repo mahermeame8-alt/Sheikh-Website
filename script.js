@@ -160,10 +160,23 @@ window.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelector('.nav-links');
 
   if (menuBtn && navLinks) {
-    menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      const isDropdownTrigger = link.closest('.nav-dropdown') && link.nextElementSibling?.classList.contains('dropdown-menu');
+
+      if (
+        window.matchMedia('(max-width: 768px)').matches &&
+        !isDropdownTrigger
+      ) {
+        navLinks.classList.remove('open');
+      }
     });
-  }
+  });
+}
 
   const dd = document.querySelector('.nav-dropdown');
   if (!dd) return;
