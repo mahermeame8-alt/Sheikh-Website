@@ -137,7 +137,7 @@ Salwat lines: smaller on mobile, larger on desktop
 
 .hero-top-title p{
   max-width: 900px;
-  margin: 6px auto;
+  margin: 0 auto;
   padding: 0 14px;
   text-align: center;
   direction: rtl;
@@ -146,16 +146,17 @@ Salwat lines: smaller on mobile, larger on desktop
 }
 
 .hero-salawat.line-1{
-  font-size: clamp(1.15rem, 3vw, 1.7rem);
+  font-size: clamp(1rem, 2.5vw, 1.45rem);
 }
 
 .hero-salawat.line-2{
-  font-size: clamp(1rem, 2.6vw, 1.45rem);
+  font-size: clamp(0.95rem, 2.2vw, 1.25rem);
 }
 
 header#home {
-  height: 100vh;
-  padding-top: 110px; /* space for fixed navbar */
+  min-height: 85vh;
+  height: auto;
+  padding-top: 110px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -213,7 +214,7 @@ a {
 }
 
 .section {
-  padding: 100px 0;
+  padding: 70px 0;
 }
 
 .section-tag {
@@ -822,12 +823,12 @@ footer {
 
   .hero-salawat.line-1 {
     font-size: 1.05rem;
-    line-height: 2.05;
+    line-height: 1.9;
   }
 
   .hero-salawat.line-2 {
     font-size: 0.95rem;
-    line-height: 2;
+    line-height: 1.9;
   }
 
   .hero-container {
@@ -895,6 +896,9 @@ footer {
 .majlis-body p{
   font-size: 1rem;
   line-height: 1.9;
+}
+.section {
+  padding: 5px 0;
 }
 }
 /* @media (min-width: 769px) and (max-width: 992px) {
@@ -1396,10 +1400,10 @@ body.cursor-glow .cursor-follower{
 
 /* Mobile-safe full height (prevents iPhone 100vh issues) */
 header#home{
-  min-height: 100svh;
+  min-height: 85vh;
   height: auto;
-  padding-top: 110px; /* keep your navbar spacing */
-  padding-bottom: 40px;
+  padding-top: 110px;
+  padding-bottom: 50px;
 }
 
 /* Touch devices: disable custom cursor */
