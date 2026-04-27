@@ -131,16 +131,26 @@ body {
   margin-bottom: 30px;
   text-align: center;
 }
+/*=============
+Salwat lines: smaller on mobile, larger on desktop
+===============*/
 
-.hero-top-title p {
-  width: fit-content;
-  max-width: 850px;
+.hero-top-title p{
+  max-width: 900px;
   margin: 6px auto;
+  padding: 0 14px;
   text-align: center;
   direction: rtl;
-  font-size: 2rem;
-  line-height: 1.9;
   color: var(--text-white);
+  line-height: 2;
+}
+
+.hero-salawat.line-1{
+  font-size: clamp(1.15rem, 3vw, 1.7rem);
+}
+
+.hero-salawat.line-2{
+  font-size: clamp(1rem, 2.6vw, 1.45rem);
 }
 
 header#home {
@@ -794,9 +804,100 @@ footer {
 
   .teach-item { flex-direction: column; align-items: flex-start; gap: 10px; }
   .email-big { font-size: 1.5rem; }
+
+  header#home {
+    padding-top: 95px;
+    min-height: 100svh;
+    height: auto;
+  }
+
+  .hero-top-title {
+    margin-bottom: 18px;
+  }
+
+  .hero-top-title .llBasmala {
+    font-size: 1.65rem !important;
+    margin-bottom: 8px;
+  }
+
+  .hero-salawat.line-1 {
+    font-size: 1.05rem;
+    line-height: 2.05;
+  }
+
+  .hero-salawat.line-2 {
+    font-size: 0.95rem;
+    line-height: 2;
+  }
+
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    justify-content: flex-start;
+    padding-top: 25px;
+    gap: 28px;
+    height: auto;
+  }
+
+  .hero-text {
+  order: 2;
+  max-width: 100%;
+  text-align: center;
 }
 
-@media (max-width: 992px) {
+  .hero-text h1 {
+    font-size: 2.45rem;
+    line-height: 1.35;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .hero-text h2 {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+.hero-image-wrapper {
+  order: 1;
+  max-width: 270px;
+  margin: 0 auto;
+}
+
+  .scroll-indicator {
+    display: none;
+  }
+
+.majalis-grid{
+  width: min(100% - 32px, 520px);
+  margin: 2rem auto 0;
+  grid-template-columns: 1fr;
+  gap: 26px;
+}
+
+.majlis-card{
+  width: 100%;
+}
+
+.majlis-img{
+  height: 210px;
+}
+
+.majlis-body{
+  padding: 18px 16px 22px;
+}
+
+.majlis-body h2{
+  font-size: 1.45rem;
+  line-height: 1.7;
+}
+
+.majlis-body p{
+  font-size: 1rem;
+  line-height: 1.9;
+}
+}
+/* @media (min-width: 769px) and (max-width: 992px) {
   .hero-container {
     flex-direction: column;
     text-align: center;
@@ -809,7 +910,7 @@ footer {
   .hero-image-wrapper { max-width: 380px; margin: 0 auto; }
 
   .scroll-indicator { display: none; }
-}
+} */
 
 /* =========================
    HERO: fluid type for mobile
@@ -820,12 +921,6 @@ footer {
   line-height: 1.15;
 }
 
-/* Top dua lines: 2rem is too big on phones */
-.hero-top-title p{
-  font-size: clamp(1.05rem, 3.6vw, 2rem);
-  line-height: 1.9;
-  padding: 0 12px; /* prevent edge-to-edge */
-}
 
 /* The Basmala glyph */
 .hero-top-title .llBasmala{
@@ -888,17 +983,29 @@ footer {
    ========================= */
 
 .majalis-grid{
-  width: 100%;
-  margin-top: 2.5rem;
+  width: min(1100px, calc(100% - 48px));
+  margin: 2.5rem auto 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px;
   align-items: start;
 }
+@media (max-width: 900px){
+  .majalis-grid{
+    width: min(520px, calc(100% - 32px));
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
 
-@media (max-width: 768px){
-  .majalis-grid{ grid-template-columns: 1fr; }
+  .majlis-card{
+    width: 100%;
+  }
+
+  .majlis-img{
+    height: 220px;
+  }
 }
+
 
 /* Card base is <details> */
 .majlis-card{
@@ -921,14 +1028,18 @@ footer {
 /* Image */
 .majlis-img{
   width: 100%;
-  height: 220px;
+  height: 260px;
   overflow: hidden;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .majlis-img img{
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   filter: grayscale(10%) contrast(105%);
 }
@@ -985,10 +1096,6 @@ footer {
   background: rgba(255,255,255,0.08);
 }
 
-/* Mobile image slightly shorter */
-@media (max-width: 768px){
-  .majlis-img{ height: 200px; }
-}
 /* Cursor glow mode */
 .cursor-glow .cursor-follower{
   border-color: transparent !important;
