@@ -182,6 +182,7 @@ const navLinks = document.querySelector('.nav-links');
 if (menuBtn && navLinks) {
   menuBtn.addEventListener('click', () => {
     navLinks.classList.toggle('open');
+    document.body.classList.toggle('menu-open');
   });
 }
 
