@@ -900,6 +900,9 @@ footer {
 .section {
   padding: 5px 0;
 }
+.page-section {
+  padding-top: 80px;
+}
 }
 /* @media (min-width: 769px) and (max-width: 992px) {
   .hero-container {
