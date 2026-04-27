@@ -153,8 +153,18 @@ initParticles();
 animate();
 
 // =========================
-// Navbar dropdown: tap to open/close (mobile)
+// Mobile navbar + dropdown
+// =========================
 window.addEventListener('DOMContentLoaded', () => {
+  const menuBtn = document.querySelector('.menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  }
+
   const dd = document.querySelector('.nav-dropdown');
   if (!dd) return;
 
@@ -164,8 +174,7 @@ window.addEventListener('DOMContentLoaded', () => {
   if (!trigger || !menu) return;
 
   trigger.addEventListener('click', (e) => {
-    // On mobile: prevent immediate navigation so it can open
-    if (window.matchMedia('(hover: none)').matches) {
+    if (window.matchMedia('(max-width: 768px)').matches) {
       e.preventDefault();
       dd.classList.toggle('open');
     }
@@ -175,14 +184,4 @@ window.addEventListener('DOMContentLoaded', () => {
     if (!dd.contains(e.target)) dd.classList.remove('open');
   });
 });
-
-const menuBtn = document.querySelector('.menu-btn');
-const navLinks = document.querySelector('.nav-links');
-
-if (menuBtn && navLinks) {
-  menuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    document.body.classList.toggle('menu-open');
-  });
-}
 

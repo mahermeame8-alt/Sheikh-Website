@@ -715,52 +715,85 @@ footer {
   .hero-text h1 { font-size: 3rem; }
   .about-grid { grid-template-columns: 1fr; }
 
+  nav {
+    padding: 14px 0;
+    background: rgba(11, 12, 16, 0.96);
+  }
+
+  .nav-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    max-width: 75%;
+  }
+
+  .brand p {
+    margin: 0;
+    font-size: 1.1rem;
+    white-space: normal;
+    text-align: right;
+  }
+
   .menu-btn {
     display: block;
-    z-index: 1001;
+    position: relative;
+    z-index: 2001;
+    font-size: 1.6rem;
   }
 
   .nav-links {
-    display: flex;
     position: fixed;
     top: 0;
-    right: -75%;
-    width: 75%;
+    right: -78%;
+    width: 78%;
     height: 100svh;
-    padding: 95px 25px 25px;
-    flex-direction: column !important;
-    gap: 24px !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    gap: 28px;
+    padding: 95px 28px 28px;
+
     background: rgba(11, 12, 16, 0.98);
     border-left: 1px solid rgba(198,168,124,0.35);
+
+    list-style: none;
     transition: right 0.35s ease;
-    z-index: 1000;
+    z-index: 2000;
   }
 
   .nav-links.open {
     right: 0;
   }
 
-  #navbar .nav-links {
-    flex-direction: column !important;
+  .nav-links li {
+    width: 100%;
+    text-align: right;
   }
 
-  #navbar .nav-links a {
-    font-size: 1.1rem !important;
+  .nav-links a {
+    display: block;
+    width: 100%;
+    font-size: 1.2rem;
+    color: var(--accent-gold);
+    text-align: right;
   }
 
-  #navbar .brand {
-    font-size: 1rem !important;
-    max-width: 70%;
+  .nav-links p {
+    margin: 0;
+    font-size: 1.2rem;
+    text-align: right;
   }
 
   .teach-item { flex-direction: column; align-items: flex-start; gap: 10px; }
   .email-big { font-size: 1.5rem; }
-}
-
-body.menu-open {
-  transform: translateX(-75%);
-  transition: transform 0.35s ease;
-  overflow: hidden;
 }
 
 @media (max-width: 992px) {
@@ -803,30 +836,28 @@ body.menu-open {
 }
 
 /* =========================
-   FORCE NAVBAR RTL LAYOUT
+   DESKTOP NAVBAR RTL LAYOUT
    ========================= */
+@media (min-width: 769px) {
+  /* Flip brand to the RIGHT, links to the LEFT */
+  #navbar .nav-wrapper {
+    flex-direction: row-reverse;
+  }
 
-/* Flip brand to the RIGHT, links to the LEFT */
-#navbar .nav-wrapper{
-  flex-direction: row-reverse !important;
-}
+  /* Make the links themselves flow RTL on desktop */
+  #navbar .nav-links {
+    flex-direction: row-reverse;
+    gap: 45px;
+  }
 
-/* Make the links themselves flow RTL (right → left) */
-#navbar .nav-links{
-  flex-direction: row-reverse !important;
-}
+  /* Slightly larger navbar fonts on desktop only */
+  #navbar .brand {
+    font-size: 1.55rem;
+  }
 
-/* Slightly larger navbar fonts */
-#navbar .brand{
-  font-size: 1.55rem !important;   /* brand size */
-}
-#navbar .nav-links a {
-  font-size: 1.55rem;
-}
-
-/* Optional: a bit more spacing between links */
-#navbar .nav-links{
-  gap: 45px !important;
+  #navbar .nav-links a {
+    font-size: 1.55rem;
+  }
 }
 
 
@@ -1113,6 +1144,31 @@ body.cursor-glow .cursor-follower{
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    min-width: unset;
+    margin-top: 12px;
+    padding: 0 12px 0 0;
+    background: transparent;
+    border: 0;
+    backdrop-filter: none;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav-dropdown.open .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu a {
+    font-size: 1rem;
+    padding: 8px 0;
+  }
 }
 
 
