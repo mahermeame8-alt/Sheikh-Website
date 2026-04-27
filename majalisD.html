@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مجالس الذكر</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Page-only styling (safe) */
+    .list-wrap{
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(6px);
+      padding: 18px;
+      margin-top: 28px;
+    }
+
+    .majlis-row{
+      display: grid;
+      grid-template-columns: 170px 1fr 90px;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .majlis-row:last-child{ border-bottom: 0; }
+
+    /* Keep list text consistent (prevents accidental inherited big sizes) */
+    .list-wrap,
+    .majlis-row,
+    .majlis-row *{
+      font-size: 1rem;
+    }
+
+    .majlis-date{
+      color: var(--accent-gold);
+      opacity: 0.95;
+      white-space: nowrap;
+    }
+
+    .majlis-title{
+      color: var(--text-white);
+      line-height: 1.9;
+    }
+
+    .majlis-action a{
+      display: inline-block;
+      padding: 8px 12px;
+      border: 1px solid rgba(198,168,124,0.35);
+      background: rgba(198,168,124,0.10);
+      color: var(--accent-gold);
+      transition: 0.2s ease;
+      text-align: center;
+      width: 100%;
+    }
+
+    .majlis-action a:hover{
+      background: rgba(198,168,124,0.16);
+      border-color: rgba(198,168,124,0.55);
+    }
+
+    /* Mobile: stack nicely */
+    @media (max-width: 768px){
+      .majlis-row{
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 14px 10px;
+      }
+      .majlis-action a{ width: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="lattice-canvas"></canvas>
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <nav id="navbar">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand">
+        <p class="arabic-nastaliq gold-text">حضرة الشيخ حازم الشمالي</p>
+      </a>
+
+      <ul class="nav-links">
+        <li>
+          <a href="index.html" class="hover-link">
+            <p class="arabic-kufi">الرئيسية</p>
+          </a>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="majalis.html" class="hover-link">
+            <p class="arabic-kufi">المجالس</p>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="arabic-kufi" href="majalisD.html">مجالس الذكر</a></li>
+            <li><a class="arabic-kufi" href="majalis.html">مجالس العلم</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#contact" class="hover-link">
+            <p class="arabic-kufi">للتواصل</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="arabic-kufi gold-text">مجالس الذكر</h1>
+
+      <p class="arabic-kufi" style="margin-top: 1.2rem; max-width: 850px;">
+        قائمة مجالس الذكر مرتبة بالتاريخ. اضغط “عرض” لفتح رابط المجلس (صفحة / يوتيوب / صوتيات).
+      </p>
+      
+
+      <div class="list-wrap">
+
+        <!-- Row -->
+        <div class="majlis-row">
+          <div class="majlis-date arabic-kufi">2026-01-12</div>
+          <div class="majlis-title arabic-kufi">مجلس الذكر — الصلاة على النبي ﷺ</div>
+          <div class="majlis-action">
+            <a class="arabic-kufi" href="dhikr-2026-01-12.html">عرض</a>
+          </div>
+        </div>
+
+        <div class="majlis-row">
+          <div class="majlis-date arabic-kufi">2026-01-05</div>
+          <div class="majlis-title arabic-kufi">مجلس الذكر — الاستغفار وآدابه</div>
+          <div class="majlis-action">
+            <a class="arabic-kufi" href="dhikr-2026-01-05.html">عرض</a>
+          </div>
+        </div>
+
+        <div class="majlis-row">
+          <div class="majlis-date arabic-kufi">2025-12-29</div>
+          <div class="majlis-title arabic-kufi">مجلس الذكر — ذكر “لا إله إلا الله”</div>
+          <div class="majlis-action">
+            <a class="arabic-kufi" href="dhikr-2025-12-29.html">عرض</a>
+          </div>
+        </div>
+
+        <!-- Copy more rows as needed -->
+
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container">
+      <p class="arabic-kufi">للتواصل:</p>
+      <a class="arabic-kufi" href="mailto:mmamah@uwaterloo.ca">mmamah@uwaterloo.ca</a>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
